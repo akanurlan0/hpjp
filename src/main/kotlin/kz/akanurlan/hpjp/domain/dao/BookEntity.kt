@@ -3,7 +3,6 @@ package kz.akanurlan.hpjp.domain.dao
 import java.util.UUID
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 
@@ -13,6 +12,5 @@ class BookEntity(
 
     @Id
     @Column
-    @GeneratedValue
     val id: UUID? = null
 )

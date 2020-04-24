@@ -5,6 +5,7 @@ import kz.akanurlan.hpjp.domain.repo.BookRepository
 import mu.KotlinLogging
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
+import java.util.UUID
 
 @Component
 class UUIDIdentifierRunner(
@@ -15,17 +16,18 @@ class UUIDIdentifierRunner(
 
     override fun run(vararg args: String?) {
 
-        for (i in 1..100) {
+        try {
             bookRepository.save(
                 BookEntity()
             )
+        } catch (ex: Exception) {
+            logger.error(ex) { "cannot save without assigned id" }
         }
 
-        logger.info { "--------------" }
+        bookRepository.save(
+            BookEntity(id = UUID.randomUUID())
+        )
 
-        val collection = IntRange(1, 100).map { BookEntity() }
-
-        bookRepository.saveAll(collection)
     }
 
 }
