@@ -17,6 +17,7 @@ repositories {
 }
 
 extra["springBootAdminVersion"] = "2.2.1"
+extra["kotlinLoggingVersion"] = "1.7.9"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -27,6 +28,7 @@ dependencies {
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("io.github.microutils:kotlin-logging:${property("kotlinLoggingVersion")}")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
