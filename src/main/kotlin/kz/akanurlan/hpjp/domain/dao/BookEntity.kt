@@ -1,5 +1,6 @@
 package kz.akanurlan.hpjp.domain.dao
 
+import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -13,6 +14,7 @@ class BookEntity(
 
     @Id
     @Column
-    @GeneratedValue
-    val id: UUID? = null
+    @GeneratedValue(generator="uuid")
+    @GenericGenerator(name="uuid",strategy="uuid")
+    val id: String? = null
 )
