@@ -37,3 +37,9 @@ management:
   health:
     mail:
       enabled: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
