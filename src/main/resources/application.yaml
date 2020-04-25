@@ -3,7 +3,9 @@ spring:
     active: "local"
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/goodreads?createDatabaseIfNotExist=true
+#    url: jdbc:postgresql://localhost:5432/goodreads?createDatabaseIfNotExist=true
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:postgresql://localhost:5432/goodreads?createDatabaseIfNotExist=true
     username: postgres
     password: postgres
     tomcat.max-active: 15
