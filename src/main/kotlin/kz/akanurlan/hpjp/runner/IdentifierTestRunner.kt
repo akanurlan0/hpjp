@@ -3,6 +3,7 @@ package kz.akanurlan.hpjp.runner
 import kz.akanurlan.hpjp.domain.dao.BookEntity
 import kz.akanurlan.hpjp.domain.dao.PersonEntity
 import mu.KotlinLogging
+import org.hibernate.Session
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
@@ -72,6 +73,30 @@ class IdentifierTestRunner() : CommandLineRunner {
 
         persons.forEach { person ->
             entityManager.detach(person)
+        }
+
+        logger.info { "---------------" }
+
+        val persons2 = listOf(
+                PersonEntity(name = "Alexandre Dumas"),
+                PersonEntity(name = "Alexander Pushkin")
+        )
+
+        val session = entityManager.unwrap(Session::class.java)
+
+        session.jdbcBatchSize = 100
+
+        persons2.forEach { person ->
+            session.save(person)
+            logger.info { "person saved: ${person}" }
+        }
+
+        logger.debug { "flushing" }
+
+        session.flush()
+
+        persons2.forEach { person ->
+            logger.info { "person saved: ${person}" }
         }
     }
 

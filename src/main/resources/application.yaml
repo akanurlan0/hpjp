@@ -14,9 +14,9 @@ spring:
     properties.hibernate.jdbc.lob.non_contextual_creation: true
     show-sql: true
     properties:
-      hibernate.jdbc.batch_size: 100
-      hibernate.order_inserts: true
-      hibernate.order_updates: true
+#      hibernate.jdbc.batch_size: 100
+#      hibernate.order_inserts: true
+#      hibernate.order_updates: true
       hibernate.generate_statistics: true
   flyway:
     enabled: false
