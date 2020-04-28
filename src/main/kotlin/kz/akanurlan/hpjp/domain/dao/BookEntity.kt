@@ -1,9 +1,9 @@
 package kz.akanurlan.hpjp.domain.dao
 
+import java.util.UUID
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
 
@@ -12,8 +12,8 @@ import javax.persistence.Table
 class BookEntity(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    @GeneratedValue
+    val id: UUID? = null,
 
     @Column
     val name: String
